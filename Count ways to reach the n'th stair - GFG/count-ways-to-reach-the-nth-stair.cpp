@@ -7,16 +7,20 @@ class Solution
 {
     public:
     //Function to count number of ways to reach the nth stair.
+    int shiv(int n,int dp[]){
+     if(n==1 || n==0)return dp[n]=1;
+      if(dp[n]!=-1){return dp[n];}
+      
+     dp[n]=(shiv(n-1,dp)+shiv(n-2,dp))%1000000007;
+     return dp[n];
+    }
     int countWays(int n)
     {
         // your code here
       int dp[n+1];
-      dp[0]=1;
-      dp[1]=1;
-      for(int i=2;i<n+1;i++){
-          dp[i]=(dp[i-1]+dp[i-2])%1000000007;
-      }
-      return dp[n]%1000000007;
+      memset(dp,-1,sizeof dp );
+      shiv(n,dp);
+      return dp[n];
     }
 };
 
