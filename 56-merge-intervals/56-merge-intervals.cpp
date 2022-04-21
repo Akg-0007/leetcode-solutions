@@ -1,15 +1,23 @@
 class Solution {
 public:
-    vector<vector<int>> merge(vector<vector<int>>& intervals) {
-        if(intervals.size()<=1) return intervals;
-        vector<vector<int>> result;
-        sort(intervals.begin(), intervals.end()); 
-        result.push_back(intervals[0]);
-        for(int i=1; i<intervals.size(); i++) {
-            if(result.back()[1] >= intervals[i][0]) result.back()[1] = max(result.back()[1] , intervals[i][1]);
-
-            else result.push_back(intervals[i]); 
+    vector<vector<int>> merge(vector<vector<int>>& v) {
+        stack<pair<int,int>>s;
+        sort(v.begin(),v.end());
+        s.push({v[0][0],v[0][1]});
+        for(int i=1;i<v.size();i++)
+        {
+           int l = v[i][0], r = v[i][1];
+            pair<int,int> top = s.top();
+            if(top.second>=l){s.pop();
+            s.push({top.first,max(top.second,r)});}
+            else{ s.push({ l, r });}
         }
-        return result;
+        vector<vector<int>>re;
+        while(!s.empty())
+        {
+            re.push_back({s.top().first,s.top().second});
+            s.pop();
+        }
+        return re;
     }
 };
