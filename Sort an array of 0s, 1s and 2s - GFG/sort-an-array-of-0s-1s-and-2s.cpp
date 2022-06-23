@@ -10,28 +10,14 @@ class Solution
     public:
     void sort012(int arr[], int n)
     {
-        // code here 
-        
-       int z=0,o=0,t=0;
-       for(int i=0;i<n;i++)
-       {
-           if(arr[i]==0)z++;
-           if(arr[i]==1)o++;
-           if(arr[i]==2)t++;
-           
-       }
-       for(int i=0;i<z;i++)
-       {
-           arr[i]=0;
-       }
-       for(int i=z;i<z+o;i++)
-       {
-           arr[i]=1;
-       }
-       for(int i=z+o;i<z+o+t;i++)
-       {
-           arr[i]=2;
-       }
+      int low=0,mid=0,high=n-1;
+      while(mid<=high)
+      {
+          if(arr[mid]==0)swap(arr[low++],arr[mid++]);
+          else if(arr[mid]==1)mid++;
+          else swap(arr[mid],arr[high--]);
+      }
+       
     }
     
 };
