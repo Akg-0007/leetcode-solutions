@@ -15,7 +15,8 @@ class Solution{
     // k : find kth smallest element and return using this function
     int kthSmallest(int arr[], int l, int r, int k) {
         //code here
-          priority_queue<int> q;
+        
+    priority_queue<int> q;
          for(int i=l;i<=l+k;i++)
            q.push(arr[i]);
          for(int i=l+k+1;i<=r;i++)
