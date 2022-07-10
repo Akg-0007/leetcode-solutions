@@ -10,25 +10,15 @@
  */
 class Solution {
 public:
-    ListNode* re(ListNode* p,ListNode* c) {
-       if(c==NULL)return p;
-       ListNode * t=c->next;
-        c->next=p;
-        return re(c,t);
-        
-}     
- 
-    
     ListNode* reverseList(ListNode* head) {
-       
-      return  re(NULL,head);
-}     
- 
-  
- 
- 
- 
-
-
-    
+      ListNode * a=NULL,*b=head,*c  ;
+        while(b)
+        {
+            c=b->next;
+            b->next=a;
+            a=b;
+            b=c;
+        }
+        return a;
+    }
 };
