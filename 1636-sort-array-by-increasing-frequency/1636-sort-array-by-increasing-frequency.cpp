@@ -4,8 +4,8 @@ public:
        priority_queue<pair<int,int>>q;
         vector<int>v;
         unordered_map<int,int>m;
-        
-        for(int i=0;i<arr.size();i++)
+        int n=arr.size();
+        for(int i=0;i<n;i++)
         {
             m[arr[i]]++;
         }
